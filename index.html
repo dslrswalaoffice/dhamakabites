@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhamaka Bites — Order Online · Tooting, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EF; --paper2:#FFFDFA; --card:#FFFFFF; --ink:#2A1512; --ink-soft:#6B564F;
+    --maroon:#7E1A1A; --maroon-deep:#5A1010; --saffron:#E89B0C; --gold:#F6C453;
+    --peacock:#1C7C8C; --line:#ECE0D2; --green:#2E7D52;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif; line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Bricolage Grotesque"; margin:0}
+  a{color:inherit; text-decoration:none}
+  .container{max-width:1080px; margin:0 auto; padding:0 22px}
+  .eyebrow{font-size:12px; letter-spacing:3px; text-transform:uppercase; font-weight:600; color:var(--saffron)}
+
+  .ribbon{background:var(--maroon-deep); color:#F7E9D6; font-size:12.5px; text-align:center; padding:7px 14px}
+  .ribbon b{color:var(--gold)}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,246,239,.93); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:66px}
+  .logo{display:flex; align-items:center; gap:10px}
+  .logo .dot{width:38px; height:38px; border-radius:50%; background:var(--maroon); color:#fff; display:flex;
+    align-items:center; justify-content:center; font-family:"Bricolage Grotesque"; font-weight:800;
+    box-shadow:0 0 0 3px #fff,0 0 0 5px var(--gold)}
+  .logo b{font-family:"Bricolage Grotesque"; font-weight:800; font-size:18px; color:var(--maroon); text-transform:uppercase; letter-spacing:.5px}
+  .nav-links{display:flex; gap:24px; align-items:center}
+  .nav-links a{font-size:14.5px; font-weight:500; color:var(--ink)}
+  .nav-links a:hover{color:var(--maroon)}
+  .nav-cta{background:var(--maroon); color:#fff!important; padding:10px 18px; border-radius:99px; font-weight:600; font-size:14px}
+  .nav-cta:hover{background:var(--maroon-deep)}
+  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px}
+  .burger span{display:block; width:24px; height:2px; background:var(--maroon); margin:5px 0}
+
+  .hero{position:relative; background:radial-gradient(120% 120% at 50% -10%, #8E2020 0%, var(--maroon) 45%, var(--maroon-deep) 100%);
+    color:#fff; overflow:hidden; text-align:center; padding:74px 0 80px}
+  .hero::before{content:""; position:absolute; inset:0; opacity:.10; z-index:0;
+    background-image:radial-gradient(circle at 50% 50%, transparent 38%, var(--gold) 38.4%, transparent 40%),
+      radial-gradient(circle at 50% 50%, transparent 48%, #fff 48.3%, transparent 50%);
+    background-size:340px 340px, 540px 540px; background-position:center; background-repeat:no-repeat}
+  .hero-in{position:relative; z-index:1}
+  .hero .brandmark{width:64px; height:64px; border-radius:50%; background:#fff; color:var(--maroon); display:flex;
+    align-items:center; justify-content:center; font-family:"Bricolage Grotesque"; font-weight:800; font-size:26px;
+    margin:0 auto 18px; box-shadow:0 0 0 4px var(--maroon),0 0 0 7px var(--gold)}
+  .hero .est{color:var(--gold); letter-spacing:4px; font-size:12px; text-transform:uppercase; font-weight:600}
+  .hero h1{font-size:clamp(40px,8vw,70px); font-weight:800; line-height:.98; margin:14px 0 6px; text-transform:uppercase}
+  .hero .tagline{font-family:"Bricolage Grotesque"; font-weight:600; font-size:clamp(16px,3vw,21px); color:var(--gold)}
+  .hero .sub{max-width:520px; margin:16px auto 0; color:#F3E2D2; font-size:15.5px}
+  .hero .btns{margin-top:28px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .paybar{margin-top:22px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap}
+  .paybar .pp{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3); color:#fff;
+    font-size:12px; font-weight:600; padding:6px 12px; border-radius:7px}
+
+  .btn{font:inherit; font-weight:600; border:none; cursor:pointer; border-radius:99px; padding:14px 26px;
+    font-size:15px; transition:transform .12s, background .15s; display:inline-block}
+  .btn:active{transform:translateY(1px)}
+  .btn-gold{background:var(--gold); color:var(--maroon-deep)}
+  .btn-gold:hover{background:#FFD877}
+  .btn-line{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.55)}
+  .btn-line:hover{border-color:#fff}
+
+  section{padding:66px 0}
+  .sec-head{text-align:center; max-width:620px; margin:0 auto 40px}
+  .sec-head h2{font-size:clamp(28px,5vw,40px); font-weight:800; color:var(--maroon); margin:8px 0 0}
+  .sec-head p{color:var(--ink-soft); margin:12px 0 0; font-size:15.5px}
+
+  .about{background:var(--paper2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .about-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:46px; align-items:center}
+  .about h2{font-size:clamp(26px,4vw,36px); font-weight:800; color:var(--maroon); margin:10px 0 16px}
+  .about p{color:var(--ink-soft); font-size:15.5px; margin:0 0 14px}
+  .pillars{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px}
+  .pillars span{background:#F7ECEC; color:var(--maroon); font-weight:600; font-size:13px; padding:7px 14px; border-radius:99px}
+  .about-card{background:linear-gradient(160deg,#8E2020,var(--maroon-deep)); color:#fff; border-radius:18px; padding:34px;
+    box-shadow:0 18px 40px -22px rgba(94,16,16,.6)}
+  .about-card h3{color:var(--gold); font-size:22px; margin-bottom:14px}
+  .about-card ul{list-style:none; padding:0; margin:0}
+  .about-card li{padding:9px 0; border-bottom:1px solid rgba(255,255,255,.14); font-size:14.5px; display:flex; align-items:center; gap:10px}
+  .about-card li:last-child{border-bottom:none}
+  .about-card li::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--gold); flex:0 0 7px}
+
+  .feat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  .fcard{background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform .18s, box-shadow .18s; display:flex; flex-direction:column}
+  .fcard:hover{transform:translateY(-4px); box-shadow:0 18px 38px -24px rgba(94,16,16,.45)}
+  .fcard .thumb{height:118px; background:linear-gradient(135deg,#9A3B1E,#7E1A1A); position:relative}
+  .fcard .thumb.v2{background:linear-gradient(135deg,#B5811A,#E89B0C)}
+  .fcard .thumb.v3{background:linear-gradient(135deg,#176573,#1C7C8C)}
+  .fcard .thumb span{position:absolute; left:14px; bottom:12px; background:rgba(0,0,0,.28); color:#fff; font-size:11px;
+    letter-spacing:1px; text-transform:uppercase; padding:4px 9px; border-radius:6px}
+  .fcard .body{padding:16px 17px 18px; display:flex; flex-direction:column; flex:1}
+  .badge{display:inline-block; background:var(--gold); color:var(--maroon-deep); font-size:10.5px; font-weight:700;
+    letter-spacing:.6px; text-transform:uppercase; padding:3px 8px; border-radius:5px; margin-bottom:8px; align-self:flex-start}
+  .fcard h3{font-size:17.5px; font-weight:700; color:var(--ink)}
+  .fcard .desc{color:var(--ink-soft); font-size:13.5px; margin:6px 0 14px; flex:1}
+  .fcard .row{display:flex; align-items:center; justify-content:space-between}
+  .fcard .price{font-family:"Bricolage Grotesque"; font-weight:800; color:var(--maroon); font-size:18px}
+
+  .add{font:inherit; font-weight:600; font-size:13px; cursor:pointer; border:1.5px solid var(--maroon); color:var(--maroon);
+    background:#fff; padding:7px 14px; border-radius:99px; transition:.15s}
+  .add:hover{background:var(--maroon); color:#fff}
+  .add:active{transform:scale(.96)}
+
+  .menu{background:var(--paper2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .tabs{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:30px}
+  .tab{font:inherit; font-weight:600; font-size:13.5px; cursor:pointer; border:1.5px solid var(--line); background:#fff;
+    color:var(--ink-soft); padding:9px 16px; border-radius:99px; transition:.15s}
+  .tab:hover{border-color:var(--saffron)}
+  .tab.on{background:var(--maroon); color:#fff; border-color:var(--maroon)}
+  .menu-list{max-width:780px; margin:0 auto; display:grid; gap:2px}
+  .mitem{display:flex; gap:14px; align-items:center; padding:13px 6px; border-bottom:1px dashed var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .name{font-weight:600; font-size:15.5px}
+  .mitem .nm-badge{font-size:9.5px; font-weight:700; color:var(--maroon); background:#F7ECEC; padding:2px 6px; border-radius:4px;
+    margin-left:8px; letter-spacing:.5px; text-transform:uppercase; vertical-align:middle}
+  .mitem .meta{font-size:12.5px; color:var(--ink-soft); margin-top:3px}
+  .mitem .pr{font-family:"Bricolage Grotesque"; font-weight:700; color:var(--maroon); white-space:nowrap}
+  .mitem .add{padding:6px 12px}
+
+  .how{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:6px}
+  .step{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 20px; text-align:center}
+  .step .n{width:34px; height:34px; border-radius:50%; background:var(--maroon); color:#fff; font-weight:700; display:flex;
+    align-items:center; justify-content:center; margin:0 auto 12px; font-family:"Bricolage Grotesque"}
+  .step h3{font-size:16px; margin-bottom:6px; color:var(--ink)}
+  .step p{font-size:13.5px; color:var(--ink-soft); margin:0}
+
+  .cater-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:8px}
+  .cchip{background:var(--card); border:1px solid var(--line); border-radius:13px; padding:22px 12px; text-align:center;
+    font-weight:600; font-size:14px; color:var(--ink)}
+  .cchip-ico{width:40px; height:40px; border-radius:50%; background:#F7ECEC; color:var(--maroon); display:flex;
+    align-items:center; justify-content:center; margin:0 auto 12px; font-size:18px}
+
+  .order{background:linear-gradient(160deg,#8E2020,var(--maroon-deep)); color:#fff; text-align:center}
+  .order h2{color:#fff; font-size:clamp(26px,4vw,38px); font-weight:800}
+  .order p{color:#F3E2D2; max-width:580px; margin:14px auto 0}
+  .order .pp-row{display:flex; gap:9px; justify-content:center; flex-wrap:wrap; margin-top:22px}
+  .order .pp{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3); color:#fff; font-size:13px;
+    font-weight:600; padding:9px 16px; border-radius:8px}
+  .order .also{margin-top:22px; font-size:13px; color:#EBD7C6}
+  .order .also b{color:var(--gold)}
+  .order .soon{margin-top:8px; font-size:12.5px; color:var(--gold)}
+  .order .btn{margin-top:24px}
+
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:42px}
+  .contact h3{color:var(--maroon); font-size:19px; margin-bottom:6px}
+  .contact .row{padding:13px 0; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--ink-soft)}
+  .contact .row b{display:block; color:var(--ink); font-weight:600; margin-bottom:2px}
+  .map{background:#EFE6DA; border:1px solid var(--line); border-radius:16px; min-height:280px; display:flex;
+    align-items:center; justify-content:center; color:var(--ink-soft); font-size:14px; text-align:center; padding:20px}
+
+  footer{background:var(--maroon-deep); color:#E9D6C4; padding:34px 0; text-align:center; font-size:13px}
+  footer .social{margin-bottom:12px; display:flex; gap:18px; justify-content:center}
+  footer .social a{color:var(--gold); font-weight:600; cursor:pointer}
+
+  /* Cart button */
+  .cartbtn{position:fixed; right:20px; bottom:20px; z-index:70; background:var(--maroon); color:#fff; border:none;
+    cursor:pointer; border-radius:99px; padding:13px 20px; font:inherit; font-weight:600; font-size:14.5px; display:flex;
+    align-items:center; gap:10px; box-shadow:0 12px 30px -10px rgba(94,16,16,.6); transform:translateY(90px); transition:transform .25s}
+  .cartbtn.show{transform:translateY(0)}
+  .cartbtn svg{width:18px; height:18px}
+  .cartbtn .ct{background:var(--gold); color:var(--maroon-deep); border-radius:99px; padding:1px 8px; font-size:13px; font-weight:700}
+
+  /* Drawer */
+  .scrim{position:fixed; inset:0; background:rgba(42,21,18,.45); opacity:0; pointer-events:none; transition:.25s; z-index:80}
+  .scrim.show{opacity:1; pointer-events:auto}
+  .drawer{position:fixed; top:0; right:0; bottom:0; width:380px; max-width:92vw; background:var(--paper); z-index:81;
+    transform:translateX(105%); transition:transform .28s; display:flex; flex-direction:column; box-shadow:-20px 0 50px -20px rgba(0,0,0,.4)}
+  .drawer.show{transform:none}
+  .drawer .dhead{padding:18px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between}
+  .drawer .dhead h3{color:var(--maroon); font-size:19px}
+  .drawer .x{background:none; border:none; font-size:24px; cursor:pointer; color:var(--ink-soft); line-height:1; padding:2px 6px}
+  .drawer .dbody{flex:1; overflow-y:auto; padding:8px 20px}
+  .citem{display:flex; align-items:center; gap:12px; padding:13px 0; border-bottom:1px solid var(--line)}
+  .citem .ci-n{flex:1; font-size:14px; font-weight:600}
+  .citem .ci-n small{display:block; color:var(--ink-soft); font-weight:400; font-size:12.5px}
+  .qty{display:flex; align-items:center; gap:8px}
+  .qty button{width:26px; height:26px; border-radius:50%; border:1.5px solid var(--line); background:#fff; cursor:pointer;
+    font-size:15px; line-height:1; color:var(--maroon); font-weight:700}
+  .qty button:hover{border-color:var(--maroon)}
+  .qty span{min-width:18px; text-align:center; font-weight:600; font-size:14px}
+  .ci-p{font-family:"Bricolage Grotesque"; font-weight:700; color:var(--maroon); min-width:54px; text-align:right; font-size:14.5px}
+  .empty{text-align:center; color:var(--ink-soft); padding:50px 20px; font-size:14px}
+  .dfoot{border-top:1px solid var(--line); padding:16px 20px 20px; background:var(--paper2)}
+  .ful{display:flex; align-items:center; justify-content:space-between; font-size:13px; color:var(--ink-soft); margin-bottom:6px}
+  .ful b{color:var(--ink)}
+  .subtotal{display:flex; align-items:center; justify-content:space-between; font-size:16px; font-weight:700; margin:6px 0 4px}
+  .subtotal .s{font-family:"Bricolage Grotesque"; color:var(--maroon)}
+  .paynote{font-size:11.5px; color:var(--ink-soft); margin:6px 0 12px}
+  .pay-opts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px}
+  .pay-opts button{font:inherit; font-weight:600; font-size:13.5px; cursor:pointer; border:1.5px solid var(--line);
+    background:#fff; color:var(--ink); padding:11px; border-radius:10px; transition:.15s}
+  .pay-opts button:hover{border-color:var(--maroon); color:var(--maroon)}
+  .pay-opts .wide{grid-column:1 / -1}
+  .pay-apple{background:#111!important; color:#fff!important; border-color:#111!important}
+  .pay-apple:hover{background:#000!important; color:#fff!important}
+  .placed{text-align:center; padding:30px 10px}
+  .placed .tick{width:54px; height:54px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center;
+    justify-content:center; font-size:28px; margin:0 auto 14px}
+  .placed h3{color:var(--green); margin-bottom:8px}
+  .placed p{font-size:13.5px; color:var(--ink-soft); margin:0 0 16px}
+  .link-btn{background:none; border:none; color:var(--maroon); font:inherit; font-weight:600; cursor:pointer; text-decoration:underline}
+
+  .toast{position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:#fff;
+    padding:13px 20px; border-radius:99px; font-size:13.5px; opacity:0; pointer-events:none; transition:.25s; z-index:90;
+    box-shadow:0 10px 30px -10px rgba(0,0,0,.5); text-align:center; max-width:90vw}
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s, transform .6s}
+  .reveal.in{opacity:1; transform:none}
+
+  @media (max-width:860px){
+    .about-grid,.contact-grid{grid-template-columns:1fr; gap:30px}
+    .feat-grid{grid-template-columns:1fr 1fr}
+    .cater-grid{grid-template-columns:repeat(2,1fr)}
+    .how{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    .nav-links{display:none; position:absolute; top:66px; left:0; right:0; background:var(--paper2); flex-direction:column;
+      padding:14px 22px 20px; gap:14px; border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .burger{display:block}
+    .feat-grid{grid-template-columns:1fr}
+    section{padding:52px 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important; scroll-behavior:auto} .reveal{opacity:1; transform:none}}
+  /* ===== Theme toggle ===== */
+  .nav-right{display:flex; align-items:center; gap:14px}
+  .theme-toggle{width:38px; height:38px; border-radius:50%; border:1.5px solid var(--line); background:var(--card);
+    cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--maroon); transition:.15s; flex:0 0 auto}
+  .theme-toggle:hover{border-color:var(--saffron)}
+  .theme-toggle svg{width:18px; height:18px}
+  .theme-toggle .sun{display:none}
+  html[data-theme="dark"] .theme-toggle .moon{display:none}
+  html[data-theme="dark"] .theme-toggle .sun{display:block; color:var(--gold)}
+
+  /* ===== Dark (caffein-style) palette ===== */
+  html[data-theme="dark"]{
+    --paper:#19100E; --paper2:#1F1411; --card:#251714; --ink:#F2E7DA; --ink-soft:#C5B0A2;
+    --maroon:#C8503C; --maroon-deep:#7E1A1A; --saffron:#F0A91C; --gold:#F6C453; --line:#3A2620;
+  }
+  html[data-theme="dark"] nav{background:rgba(25,16,14,.92)}
+  html[data-theme="dark"] .logo b{color:var(--gold)}
+  html[data-theme="dark"] .nav-cta{background:var(--maroon); color:#fff!important}
+  html[data-theme="dark"] .nav-cta:hover{background:#B5432F}
+  html[data-theme="dark"] .hero{background:radial-gradient(120% 120% at 50% -10%, #4A1414 0%, #2A0E0C 55%, #19100E 100%)}
+  html[data-theme="dark"] .sec-head h2,
+  html[data-theme="dark"] .about h2,
+  html[data-theme="dark"] .contact h3,
+  html[data-theme="dark"] .drawer .dhead h3{color:var(--gold)}
+  html[data-theme="dark"] .pillars span{background:rgba(240,169,28,.14); color:var(--gold)}
+  html[data-theme="dark"] .tab{background:var(--card); color:var(--ink-soft); border-color:var(--line)}
+  html[data-theme="dark"] .tab.on{background:var(--maroon); color:#fff; border-color:var(--maroon)}
+  html[data-theme="dark"] .add{background:transparent; color:var(--gold); border-color:var(--maroon)}
+  html[data-theme="dark"] .add:hover{background:var(--maroon); color:#fff}
+  html[data-theme="dark"] .nm-badge{background:rgba(240,169,28,.16); color:var(--gold)}
+  html[data-theme="dark"] .cchip-ico{background:rgba(240,169,28,.16); color:var(--gold)}
+  html[data-theme="dark"] .price,
+  html[data-theme="dark"] .mitem .pr,
+  html[data-theme="dark"] .ci-p,
+  html[data-theme="dark"] .subtotal .s{color:var(--gold)}
+  html[data-theme="dark"] .qty button{background:var(--card); color:var(--gold)}
+  html[data-theme="dark"] .pay-opts button{background:var(--card); color:var(--ink)}
+  html[data-theme="dark"] .pay-opts button:hover{border-color:var(--maroon); color:var(--gold)}
+  html[data-theme="dark"] .pay-apple{background:#000!important; color:#fff!important; border-color:#000!important}
+  html[data-theme="dark"] .map{background:#1F1411; color:var(--ink-soft); border-color:var(--line)}
+  html[data-theme="dark"] footer{background:#140B09}
+  html[data-theme="dark"] .toast{background:#3A2620; color:var(--ink)}
+
+</style>
+</head>
+<body>
+
+<div class="ribbon">Concept preview for <b>Dhamaka Bites</b> — ordering &amp; payment shown for demonstration. No real payment is taken.</div>
+
+<nav>
+  <div class="container nav-in">
+    <a class="logo" href="#top"><span class="dot">DB</span><b>Dhamaka Bites</b></a>
+    <div class="nav-right">
+      <div class="nav-links" id="navlinks">
+        <a href="#about">About</a>
+        <a href="#featured">Must-Try</a>
+        <a href="#menu">Order</a>
+        <a href="#catering">Catering</a>
+        <a href="#contact">Find Us</a>
+        <a href="#menu" class="nav-cta">Order Online</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Switch light / dark">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="container hero-in">
+    <div class="brandmark">DB</div>
+    <div class="est">Modern Indian Cuisine · Tooting, London</div>
+    <h1>Dhamaka Bites</h1>
+    <div class="tagline">The Blast of Flavour</div>
+    <p class="sub">Authentic Indian street food, chaats, biryanis and grills — order online for collection and pay your way.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="#menu">Order Online</a>
+      <a class="btn btn-line" data-book>Book a Table</a>
+    </div>
+    <div class="paybar">
+      <span class="pp">Apple Pay</span><span class="pp">Google Pay</span><span class="pp">Card</span><span class="pp">Pay at counter</span>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container about-grid reveal">
+    <div>
+      <span class="eyebrow">Welcome</span>
+      <h2>Taste the tradition, feel the hospitality</h2>
+      <p>At Dhamaka Bites we&rsquo;re passionate about bringing the rich, vibrant flavours of India to our community. Whether you&rsquo;re collecting a meal or feeding a celebration, we&rsquo;re delighted to serve you.</p>
+      <p>Our mission is simple: share exceptional Indian cuisine, prepared with fresh ingredients, traditional recipes and genuine care.</p>
+      <div class="pillars"><span>Authentic Flavours</span><span>Fresh Ingredients</span><span>Warm Hospitality</span></div>
+    </div>
+    <div class="about-card">
+      <h3>Order direct &amp; save</h3>
+      <ul>
+        <li>Browse the full menu and order online</li>
+        <li>Apple Pay, Google Pay, card or pay at counter</li>
+        <li>Ready for collection from our Tooting kitchen</li>
+        <li>Catering for every celebration</li>
+        <li>Home delivery coming soon</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section id="featured">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Signature dishes</span>
+      <h2>Must-Try at Dhamaka Bites</h2>
+      <p>The dishes our kitchen is proudest of — add them straight to your order.</p>
+    </div>
+    <div class="feat-grid reveal">
+      <div class="fcard"><div class="thumb"><span>House Special</span></div><div class="body"><span class="badge">Must Try</span><h3>Dhamaka Bites Special</h3><p class="desc">House special fusion-style egg platter — our namesake plate.</p><div class="row"><span class="price">£12.99</span><button class="add" data-add="Dhamaka Bites Special|12.99">+ Add</button></div></div></div>
+      <div class="fcard"><div class="thumb v2"><span>From the grill</span></div><div class="body"><span class="badge">Must Try</span><h3>Grilled Lamb Chops</h3><p class="desc">Tender lamb chops marinated and flame-grilled, 3 pieces.</p><div class="row"><span class="price">£10.99</span><button class="add" data-add="Grilled Lamb Chops|10.99">+ Add</button></div></div></div>
+      <div class="fcard"><div class="thumb v3"><span>Dhaba style</span></div><div class="body"><span class="badge">Must Try</span><h3>Dhaba-Style Chicken Curry</h3><p class="desc">Authentic Indian-style chicken curry with bold spices.</p><div class="row"><span class="price">£9.49</span><button class="add" data-add="Dhaba-Style Chicken Curry|9.49">+ Add</button></div></div></div>
+      <div class="fcard"><div class="thumb v2"><span>Indo-Chinese</span></div><div class="body"><span class="badge">Must Try</span><h3>Chilli Garlic Momos</h3><p class="desc">Crispy dumplings tossed with burnt garlic &amp; Indo-Chinese sauce.</p><div class="row"><span class="price">£6.99</span><button class="add" data-add="Chilli Garlic Momos|6.99">+ Add</button></div></div></div>
+      <div class="fcard"><div class="thumb"><span>Chaat corner</span></div><div class="body"><span class="badge">Must Try</span><h3>Samosa Chaat</h3><p class="desc">White ragda topped with samosa, chutneys, sev &amp; pomegranate.</p><div class="row"><span class="price">£4.99</span><button class="add" data-add="Samosa Chaat|4.99">+ Add</button></div></div></div>
+      <div class="fcard"><div class="thumb v3"><span>Veg mains</span></div><div class="body"><span class="badge">Must Try</span><h3>Special Cheese Butter Masala</h3><p class="desc">Cubes of cheese in a luxurious buttery tomato sauce.</p><div class="row"><span class="price">£8.49</span><button class="add" data-add="Special Cheese Butter Masala|8.49">+ Add</button></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU / ORDER -->
+<section class="menu" id="menu">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Order online · Collection</span>
+      <h2>Build your order</h2>
+      <p>Tap a category, add items to your bag, and check out. Allergen details available on request.</p>
+    </div>
+    <div class="tabs reveal" id="tabs">
+      <button class="tab on" data-cat="chaat">Chaat Corner</button>
+      <button class="tab" data-cat="veg">Veg Starters</button>
+      <button class="tab" data-cat="nonveg">Non-Veg Starters</button>
+      <button class="tab" data-cat="indo">Indo-Chinese</button>
+      <button class="tab" data-cat="vegm">Veg Mains</button>
+      <button class="tab" data-cat="nonvegm">Non-Veg Mains</button>
+      <button class="tab" data-cat="egg">Egg Specials</button>
+      <button class="tab" data-cat="rice">Breads &amp; Biryani</button>
+      <button class="tab" data-cat="dessert">Desserts &amp; Drinks</button>
+    </div>
+    <div class="menu-list" id="menuList"></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Quick &amp; easy</span>
+      <h2>How ordering works</h2>
+    </div>
+    <div class="how reveal">
+      <div class="step"><div class="n">1</div><h3>Choose your dishes</h3><p>Browse the full menu and add favourites to your bag.</p></div>
+      <div class="step"><div class="n">2</div><h3>Pay your way</h3><p>Apple Pay, Google Pay or card online — or choose to pay at the counter.</p></div>
+      <div class="step"><div class="n">3</div><h3>Collect &amp; enjoy</h3><p>We prepare your order fresh for collection from our Tooting kitchen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section id="catering" style="background:var(--paper2); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">For every occasion</span>
+      <h2>Catering &amp; private events</h2>
+      <p>Let us make your special occasion memorable with delicious food and authentic Indian hospitality.</p>
+    </div>
+    <div class="cater-grid reveal">
+      <div class="cchip"><div class="cchip-ico">★</div>Baby Showers</div>
+      <div class="cchip"><div class="cchip-ico">★</div>Birthday Parties</div>
+      <div class="cchip"><div class="cchip-ico">★</div>Family Gatherings</div>
+      <div class="cchip"><div class="cchip-ico">★</div>Weddings</div>
+      <div class="cchip"><div class="cchip-ico">★</div>Corporate Events</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER BAND -->
+<section class="order" id="order">
+  <div class="container reveal">
+    <span class="eyebrow">Order online</span>
+    <h2>Skip the apps — order direct</h2>
+    <p>Order straight from us for collection and pay however suits you. No app, no middleman.</p>
+    <div class="pp-row">
+      <span class="pp">Apple Pay</span><span class="pp">Google Pay</span><span class="pp">Card</span><span class="pp">Pay at counter</span>
+    </div>
+    <p class="soon">Home delivery coming soon — with automatic delivery-fee calculation by area.</p>
+    <p class="also">Also available on <b>Uber Eats</b> · <b>Deliveroo</b> · <b>Just Eat</b></p>
+    <a class="btn btn-gold" href="#menu">Start your order</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2>Find Dhamaka Bites</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact">
+        <h3>Get in touch</h3>
+        <div class="row"><b>Address</b>[Restaurant address], Tooting, London SW17</div>
+        <div class="row"><b>Phone</b>+44 7747 222605</div>
+        <div class="row"><b>Opening hours</b>Mon–Sun · [opening hours to confirm]</div>
+        <div class="row"><b>Table bookings</b>Booked easily via Google — <span class="link-btn" data-book>reserve a table</span></div>
+        <div class="row"><b>Follow us</b>Instagram · TikTok &mdash; @dhamaka_bites</div>
+      </div>
+      <div class="map">📍 Google Map &amp; reservations embed here on the live site</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="social"><a data-demo>Instagram</a><a data-demo>TikTok</a><a data-demo>Just Eat</a></div>
+    <div>© 2026 Dhamaka Bites · The Blast of Flavour · Tooting, London</div>
+  </div>
+</footer>
+
+<!-- Cart button -->
+<button class="cartbtn" id="cartbtn">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  <span>Bag</span><span class="ct" id="cartCount">0</span><span id="cartTotal">£0.00</span>
+</button>
+
+<!-- Drawer -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your order">
+  <div class="dhead"><h3>Your order</h3><button class="x" id="closeDrawer" aria-label="Close">&times;</button></div>
+  <div class="dbody" id="drawerBody"></div>
+  <div class="dfoot" id="drawerFoot"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const MENU = {
+    chaat:[["Bombay Bhel","Puffed rice, sev, onions & tangy chutneys",3.99],["Dahi Puri (6 pcs)","Crispy puris, smashed potato, sweet yoghurt",3.99,"Must Try"],["Pani Puri (8 pcs)","Crisp puris, potato, chickpeas & spicy mint water",2.99],["Pani Puri Family Pack (40 pcs)","40 fresh puris with fillings & pani",12.99],["Samosa Chaat","Ragda, samosa, chutneys, sev & pomegranate",4.99,"Must Try"],["Crispy Patra Chaat","Golden patra, tamarind chutney, yogurt & sev",5.49],["Delhi-Style Avocado Basket Chaat","Crisp basket, smashed avocado, chutneys & sev",5.99]],
+    veg:[["Veg Samosa (3 pcs)","Crispy pastries with spiced potato & peas",3.49],["Onion Bhajiyas (2 pcs)","Light, crispy onion fritters",3.99],["Veg Grilled Cheese Sandwich","Veg, potato masala, chutney & cheese",4.99],["Pav Bhaji","Buttery vegetable curry with toasted buns",7.49],["Tandoori Grilled Paneer","Paneer grilled in aromatic tandoori spices",6.99],["Spinach Paneer Paratha","Whole-wheat paratha, paneer & spinach",4.49,"Must Try"],["Loaded Fries","Fries topped with veg, cheese & sauces",4.99],["Vada Pav","Mumbai's favourite potato vada in a soft bun",2.00]],
+    nonveg:[["Meat Samosa (3 pcs)","Crispy samosas with seasoned minced meat",4.99],["Chicken 65","South Indian fried chicken, spices & chili",7.49],["Chicken Spring Rolls (4 pcs)","Crunchy rolls with chicken & vegetables",4.99],["Tandoori Chicken","Yoghurt-marinated chicken, grilled",8.99],["Lamb Kebab Roll","Soft roll with spiced lamb kebab & chutneys",5.49],["Grilled Lamb Chops (3 pcs)","Tender lamb chops, marinated & flame-grilled",10.99,"Must Try"],["Wok on Fire Wings","Crispy wings in homemade special sauce",8.99]],
+    indo:[["Veg Manchurian","Crispy veg balls in Indo-Chinese sauce",7.49,"Must Try"],["Chilli Paneer","Paneer, peppers, onions & chilli-garlic",6.99],["Chilli Garlic Momos","Crispy dumplings, burnt garlic sauce",6.99,"Must Try"],["Veg Manchurian Noodles","Noodles with veg & Manchurian balls",8.99],["Chilli Chicken","Crispy chicken in Indo-Chinese sauces",7.99],["Chicken Fried Rice","Fried rice with chicken & vegetables",6.99],["Veg Fried Rice","Stir-fried rice with vegetables",5.49]],
+    vegm:[["Special Kaju Masala","Cashews in a creamy, rich masala gravy",8.49],["Special Cheese Butter Masala","Cheese cubes in buttery tomato sauce",8.49,"Must Try"],["Paneer Angara","Cottage cheese in smoky tomato-onion gravy",8.49],["Special Tadka Dal","Yellow lentils tempered with garlic & butter",7.49,"Must Try"],["Dal Makhani","Black lentils with butter & cream",7.49],["Kadai Paneer","Paneer with peppers, tomatoes & kadai spices",7.49,"Must Try"],["Baingan Bharta","Smoky roasted aubergine with onions",7.49,"Must Try"],["Chana Masala","Chickpeas in an onion-based gravy",6.99]],
+    nonvegm:[["Special Dhaba-Style Chicken Curry","Indian-style chicken curry, bold spices",9.49,"Must Try"],["Butter Chicken","Buttery tomato-based cream curry",9.99],["Methi Malai Chicken","Chicken in creamy fenugreek sauce",10.49],["Chicken Tikka Masala","Grilled chicken in rich tikka gravy",8.99],["Chicken Korma","Creamy aromatic curry with nuts",8.99],["Kadai Chicken","Chicken in wok-style kadai with peppers",8.99],["Lamb Masala","Tender lamb in onion-tomato gravy",9.99],["Lamb Rogan Josh","Slow-cooked lamb in aromatic gravy",10.49]],
+    egg:[["Egg Chilli","Egg in spicy Indo-Chinese chilli sauce",5.49,"Must Try"],["Egg Bhurji","Scrambled eggs with onions & tomatoes",4.49],["Egg Special Paplet","Signature spicy egg preparation",8.99,"Must Try"],["Egg Curry","Boiled eggs in onion-tomato gravy",6.49],["Egg Gotala","Egg khama topped with half fry",6.49,"Must Try"],["Egg Mughlai","Royal Mughlai-style creamy egg curry",5.49],["Dhamaka Bites Special","House special fusion-style egg platter",12.99,"Must Try"]],
+    rice:[["Butter Naan","Soft, buttery tandoori naan",2.49],["Garlic Naan","Naan topped with fresh garlic",2.99],["Cheese Naan","Naan stuffed with melted cheese",3.49],["Veg Biryani","Basmati rice with seasonal vegetables",8.49],["Chicken Biryani","Classic chicken dum biryani",9.49],["Hyderabadi Biryani","Aromatic Hyderabadi-style biryani",8.99],["Lamb Biryani","Tender lamb layered with spiced rice",9.49]],
+    dessert:[["Gulab Jamun with Ice Cream (2 pcs)","Warm gulab jamun with ice cream",4.49],["Gajar Halwa","Slow-cooked carrot halwa",4.49],["Special Ras Malai (2 pcs)","Paneer dumplings in sweet saffron milk",4.49],["Kulfi (Mango / Pistachio)","Traditional Indian frozen dessert",2.49],["Mango Lassi","Sweet mango yoghurt drink",3.49],["Masala Chaas (250 ml)","Spiced buttermilk",2.49]]
+  };
+
+  const fmt = n => "£" + n.toFixed(2);
+  const list = document.getElementById("menuList");
+  function render(cat){
+    list.innerHTML = MENU[cat].map(it=>{
+      const badge = it[3] ? `<span class="nm-badge">${it[3]}</span>` : "";
+      const key = `${it[0]}|${it[2]}`;
+      return `<div class="mitem"><div class="ml"><div class="name">${it[0]}${badge}</div><div class="meta">${it[1]}</div></div><div class="pr">${fmt(it[2])}</div><button class="add" data-add="${key}">+ Add</button></div>`;
+    }).join("");
+  }
+  render("chaat");
+  document.getElementById("tabs").addEventListener("click",e=>{
+    const b=e.target.closest(".tab"); if(!b) return;
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("on"));
+    b.classList.add("on"); render(b.dataset.cat);
+  });
+
+  // ---- Cart ----
+  let cart = []; // {name, price, qty}
+  const cartBtn = document.getElementById("cartbtn");
+  const elCount = document.getElementById("cartCount");
+  const elTotal = document.getElementById("cartTotal");
+
+  function totals(){ const q=cart.reduce((s,i)=>s+i.qty,0); const t=cart.reduce((s,i)=>s+i.qty*i.price,0); return {q,t}; }
+  function syncBtn(){ const {q,t}=totals(); elCount.textContent=q; elTotal.textContent=fmt(t);
+    cartBtn.classList.toggle("show", q>0 || drawer.classList.contains("show")); }
+  function add(name, price){
+    const f=cart.find(i=>i.name===name);
+    if(f) f.qty++; else cart.push({name, price:+price, qty:1});
+    syncBtn(); flash(`Added ${name}`);
+  }
+  function setQty(name, d){
+    const f=cart.find(i=>i.name===name); if(!f) return;
+    f.qty+=d; if(f.qty<=0) cart=cart.filter(i=>i.name!==name);
+    syncBtn(); renderDrawer();
+  }
+
+  document.addEventListener("click", e=>{
+    const a=e.target.closest("[data-add]");
+    if(a){ const [n,p]=a.dataset.add.split("|"); add(n,p); }
+  });
+
+  // ---- Drawer ----
+  const drawer=document.getElementById("drawer"), scrim=document.getElementById("scrim");
+  const dBody=document.getElementById("drawerBody"), dFoot=document.getElementById("drawerFoot");
+  let checkingOut=false;
+
+  function openDrawer(){ checkingOut=false; renderDrawer(); drawer.classList.add("show"); scrim.classList.add("show"); syncBtn(); }
+  function closeDrawer(){ drawer.classList.remove("show"); scrim.classList.remove("show"); syncBtn(); }
+  cartBtn.addEventListener("click", openDrawer);
+  document.getElementById("closeDrawer").addEventListener("click", closeDrawer);
+  scrim.addEventListener("click", closeDrawer);
+
+  function renderDrawer(){
+    if(cart.length===0){
+      dBody.innerHTML = `<div class="empty">Your bag is empty.<br>Add a few dishes to get started.</div>`;
+      dFoot.innerHTML = ""; return;
+    }
+    dBody.innerHTML = cart.map(i=>`
+      <div class="citem">
+        <div class="ci-n">${i.name}<small>${fmt(i.price)} each</small></div>
+        <div class="qty"><button data-q="${i.name}|-1">−</button><span>${i.qty}</span><button data-q="${i.name}|1">+</button></div>
+        <div class="ci-p">${fmt(i.price*i.qty)}</div>
+      </div>`).join("");
+    const {t}=totals();
+    if(!checkingOut){
+      dFoot.innerHTML = `
+        <div class="ful"><span>Fulfilment</span><b>Collection · Tooting</b></div>
+        <div class="subtotal"><span>Subtotal</span><span class="s">${fmt(t)}</span></div>
+        <p class="paynote">Delivery coming soon. Taxes shown at checkout on the live site.</p>
+        <button class="btn btn-gold" style="width:100%" id="toCheckout">Checkout · ${fmt(t)}</button>`;
+      document.getElementById("toCheckout").addEventListener("click", ()=>{ checkingOut=true; renderDrawer(); });
+    } else {
+      dFoot.innerHTML = `
+        <div class="ful"><span>Fulfilment</span><b>Collection · Tooting</b></div>
+        <div class="subtotal"><span>Total</span><span class="s">${fmt(t)}</span></div>
+        <p class="paynote">Choose how to pay:</p>
+        <div class="pay-opts">
+          <button class="pay-apple wide" data-pay="Apple Pay"> Pay</button>
+          <button data-pay="Google Pay">Google Pay</button>
+          <button data-pay="Card">Card</button>
+          <button class="wide" data-pay="Pay at counter">Pay at counter</button>
+        </div>
+        <button class="link-btn" id="backCart" style="display:block; margin:6px auto 0">← Back to bag</button>`;
+      document.getElementById("backCart").addEventListener("click", ()=>{ checkingOut=false; renderDrawer(); });
+    }
+  }
+
+  document.addEventListener("click", e=>{
+    const q=e.target.closest("[data-q]");
+    if(q){ const [n,d]=q.dataset.q.split("|"); setQty(n, +d); }
+    const pay=e.target.closest("[data-pay]");
+    if(pay){ placeOrder(pay.dataset.pay); }
+  });
+
+  function placeOrder(method){
+    const {t}=totals();
+    dBody.innerHTML = `
+      <div class="placed">
+        <div class="tick">✓</div>
+        <h3>Order placed!</h3>
+        <p>This is a preview, so no payment was taken.<br><br>On the live site, your <b>${fmt(t)}</b> order via <b>${method}</b> is sent instantly to the kitchen — to the orders dashboard, by WhatsApp, and as a printed ticket — ready for collection in Tooting.</p>
+        <button class="link-btn" id="resetOrder">Start a new order</button>
+      </div>`;
+    dFoot.innerHTML = "";
+    cart=[]; syncBtn();
+    document.getElementById("resetOrder").addEventListener("click", ()=>{ checkingOut=false; closeDrawer(); });
+  }
+
+  // ---- misc ----
+  const nl=document.getElementById("navlinks");
+  document.getElementById("burger").addEventListener("click",()=>nl.classList.toggle("open"));
+
+  const themeToggle=document.getElementById("themeToggle");
+  themeToggle.addEventListener("click",()=>{
+    const next = document.documentElement.getAttribute("data-theme")==="dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", next);
+  });
+  nl.addEventListener("click",e=>{ if(e.target.tagName==="A") nl.classList.remove("open"); });
+
+  const toast=document.getElementById("toast"); let tT;
+  function flash(msg){ toast.textContent=msg; toast.classList.add("show"); clearTimeout(tT); tT=setTimeout(()=>toast.classList.remove("show"),1600); }
+
+  document.querySelectorAll("[data-book]").forEach(el=>{ el.style.cursor="pointer";
+    el.addEventListener("click",()=>flash("Table booking opens your Google listing on the live site")); });
+  document.querySelectorAll("[data-demo]").forEach(el=>{ el.style.cursor="pointer";
+    el.addEventListener("click",ev=>{ ev.preventDefault(); flash("Preview only — links connect on the live site"); }); });
+
+  const io=new IntersectionObserver(es=>{ es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} }); },{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
