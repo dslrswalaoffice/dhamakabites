@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dhamakabites.co.uk/sitemap.xml
