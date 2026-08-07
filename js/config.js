@@ -9,7 +9,7 @@ const CONFIG = {
     address:  "57 Broadway Market, Tooting High St, London SW17 0RJ",
     hours:    "Mon: Closed · Tue–Wed: 12–10:30pm · Thu–Sat: 12–11pm · Sun: 12–10pm",
     justEat:  "https://www.just-eat.co.uk/restaurants-dhamaka-bites-tooting-broadway-sw17/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder",                             // paste Just Eat page URL
-    uberEats: "",                             // paste Uber Eats page URL
+    uberEats: "https://www.ubereats.com/gb/store/dhamaka-bites-~-indian-restaurant/diWBiNiYVXmmFOkryd6S_Q?diningMode=PICKUP&utm_campaign=CM2508147-search-free-nonbrand-google-pas_e_all_acq_Global&utm_medium=search-free-nonbrand&utm_source=google-pas&rwg_token=AE37R_i7iNlN_3uYtuDkTsqvY-c2w6dr6pxMkX6RtjgflIzmhmImIlNpka-e5If1yXqVAWRVUUJe4EbFpfyYRi0rr2zCj3qdHQ%3D%3D",                             // paste Uber Eats page URL
     deliveroo:"https://deliveroo.co.uk/menu/london/tooting/dhamaka-food-house-bites-broadway-market/?utm_medium=affiliate&utm_source=google_maps_link&fulfillment_type=COLLECTION",                             // paste Deliveroo page URL
     instagram:"https://www.instagram.com/dhamaka_bites/",                             // paste Instagram URL
     tiktok:   "https://www.tiktok.com/@dhamaka_bites",                             // paste TikTok URL
